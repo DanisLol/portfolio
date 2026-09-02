@@ -145,3 +145,92 @@ body {
     width: min(78vw, 340px);
   }
 }
+
+.about-carousel {
+  min-width: 0;
+}
+
+.carousel-stage {
+  position: relative;
+  display: flex;
+  height: clamp(360px, 42vw, 500px);
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  perspective: 1100px;
+  isolation: isolate;
+}
+
+.carousel-floor {
+  position: absolute;
+  bottom: 5%;
+  left: 8%;
+  right: 8%;
+  height: 27%;
+  border-top: 1px solid rgba(23, 23, 23, 0.22);
+  background: linear-gradient(to bottom, rgba(23, 23, 23, 0.01), rgba(23, 23, 23, 0.12));
+  transform: perspective(500px) rotateX(60deg);
+  transform-origin: top;
+  z-index: -1;
+}
+
+.carousel-card {
+  position: absolute;
+  width: clamp(150px, 20vw, 250px);
+  aspect-ratio: 0.78;
+  overflow: hidden;
+  border: 1px solid rgba(250, 246, 242, 0.7);
+  border-radius: 5px;
+  background: var(--foreground);
+  box-shadow: 0 18px 28px rgba(23, 23, 23, 0.24);
+  cursor: none;
+  transition: transform 620ms cubic-bezier(0.22, 1, 0.36, 1), opacity 420ms ease, filter 420ms ease, box-shadow 420ms ease;
+  will-change: transform, opacity;
+}
+
+.carousel-card img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0.7) contrast(1.08);
+  transition: filter 420ms ease, transform 620ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.carousel-card-shine {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(115deg, rgba(250, 246, 242, 0.18), transparent 35%, rgba(23, 23, 23, 0.24));
+  pointer-events: none;
+}
+
+.carousel-card-2 { transform: translateX(-158%) translateY(14%) rotate(-8deg) scale(0.78); opacity: 0.48; filter: blur(0.3px); }
+.carousel-card-1 { transform: translateX(-78%) translateY(7%) rotate(-4deg) scale(0.9); opacity: 0.78; }
+.carousel-card-active { z-index: 3; transform: translateX(0) translateY(-2%) rotate(0deg) scale(1); box-shadow: 0 25px 35px rgba(23, 23, 23, 0.3); }
+.carousel-card-1:nth-of-type(4) { transform: translateX(78%) translateY(7%) rotate(4deg) scale(0.9); }
+.carousel-card-2:nth-of-type(5) { transform: translateX(158%) translateY(14%) rotate(8deg) scale(0.78); }
+
+.carousel-card:hover img,
+.carousel-card:focus-visible img,
+.carousel-card-active img { filter: saturate(0.92) contrast(1.05); }
+.carousel-card:focus-visible { outline: 2px solid var(--accent-pink); outline-offset: 5px; }
+
+.carousel-controls { display: flex; align-items: center; justify-content: center; gap: 1.25rem; border-top: 1px solid rgba(23, 23, 23, 0.2); padding-top: 1rem; }
+.carousel-arrow { display: grid; size: 2.9rem; place-items: center; border: 1px solid rgba(23, 23, 23, 0.35); font-family: Geneva, Verdana, sans-serif; font-size: 1.35rem; transition: background-color 180ms ease, transform 180ms ease; }
+.carousel-arrow:hover, .carousel-arrow:focus-visible { background: var(--accent-pink); transform: translateY(-2px); outline: none; }
+.carousel-caption { min-width: 10rem; text-align: center; }
+.carousel-caption p { font-family: Geneva, Verdana, sans-serif; font-size: 1.05rem; font-weight: 700; }
+.carousel-caption span { font-family: var(--font-geist-mono); font-size: 0.63rem; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(23, 23, 23, 0.55); }
+.carousel-dots { display: flex; justify-content: center; gap: 0.5rem; padding-top: 0.75rem; }
+.carousel-dots button { padding: 0.25rem; }
+.carousel-dots span { display: block; size: 0.45rem; border: 1px solid var(--foreground); border-radius: 999px; transition: background-color 180ms ease, transform 180ms ease; }
+.carousel-dots button[aria-current="true"] span { background: var(--accent-pink); transform: scale(1.3); }
+
+@media (max-width: 767px) {
+  .carousel-stage { height: 390px; }
+  .carousel-card { width: min(52vw, 210px); }
+  .carousel-card-2 { transform: translateX(-112%) translateY(14%) rotate(-8deg) scale(0.7); }
+  .carousel-card-1 { transform: translateX(-58%) translateY(7%) rotate(-4deg) scale(0.86); }
+  .carousel-card-1:nth-of-type(4) { transform: translateX(58%) translateY(7%) rotate(4deg) scale(0.86); }
+  .carousel-card-2:nth-of-type(5) { transform: translateX(112%) translateY(14%) rotate(8deg) scale(0.7); }
+}
