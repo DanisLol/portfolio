@@ -11,7 +11,11 @@ export type SocialLinkData = {
  * Replace the placeholder hrefs with real profile URLs when ready.
  */
 export const socialLinks: SocialLinkData[] = [
-  { platform: "x", href: "#", label: "X (Twitter)" },
-  { platform: "linkedin", href: "#", label: "LinkedIn" },
+  { platform: "x", href: "https://x.com/that_mj_w", label: "X (Twitter)" },
+  {
+    platform: "linkedin",
+    href: "https://www.linkedin.com/in/myeongjin-wang-8034ab259/",
+    label: "LinkedIn",
+  },
   { platform: "email", href: "mailto:#", label: "Email" },
 ];

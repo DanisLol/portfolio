@@ -13,7 +13,11 @@ export default function Hero() {
           <p>Software ⚬ Design ⚬ Hardware</p>
           <p>
             {"CS (HCI) @ "}
-            <a href="#" className="text-accent-pink">
+            <a
+              href="https://future.utoronto.ca/data-computer-science"
+              target="_blank"
+              className="text-accent-pink"
+            >
               UToronto (main campus)
             </a>
           </p>
