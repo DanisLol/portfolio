@@ -1,13 +1,21 @@
-import Image from "next/image";
+import Hero from "./components/home/Hero";
+import BentoGrid from "./components/home/BentoGrid";
+import Footer from "./components/home/Footer";
 
+/**
+ * Homepage: hero introduction, bento grid of featured work, and a footer
+ * call-to-action.
+ */
 export default function Home() {
   return (
-    <div className="relative min-h-screen bg-stone-200 flex justify-center items-center">
-      <div className="flex flex-col">
-        <button className="w-24 h-12 px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700 transition duration-300">
-          Button
-        </button>
+    <main className="flex min-h-screen flex-col bg-cream">
+      <div className="flex-1 pl-[140px] pr-[72px] pt-24">
+        <Hero />
+        <div className="mt-24">
+          <BentoGrid />
+        </div>
       </div>
-    </div>
+      <Footer />
+    </main>
   );
 }

@@ -9,13 +9,25 @@ body,
 :root {
   --background: #ffffff;
   --foreground: #171717;
+  --cream: #faf6f2;
+  --nav-pink: #ed93b1;
+  --accent-pink: #ff7bac;
+  --footer-brown: #98562d;
+  --card-gray: #ebebeb;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-cream: var(--cream);
+  --color-nav-pink: var(--nav-pink);
+  --color-accent-pink: var(--accent-pink);
+  --color-footer-brown: var(--footer-brown);
+  --color-card-gray: var(--card-gray);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --font-geneva: Geneva, Verdana, sans-serif;
+  --font-roboto: var(--font-roboto);
 }
 
 @media (prefers-color-scheme: dark) {
