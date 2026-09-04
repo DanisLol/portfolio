@@ -1,43 +1,35 @@
-import Image from "next/image";
 import Link from "next/link";
-import type { BentoCardData } from "@/data/bento";
-import { cn } from "@/utils/utils";
+import type { Project } from "@/data/projects";
+import ImagePlaceholder from "@/app/components/ImagePlaceholder";
 
 type BentoCardProps = {
-  card: BentoCardData;
+  project: Project;
 };
 
 /**
- * Single bento grid cell. Renders the card's image when one is supplied,
- * otherwise falls back to an empty placeholder box ready for future
- * project content.
+ * Homepage project card: image slot, index, title, and short description.
+ * The whole card remains a link, matching the previous grid interaction.
  */
-export default function BentoCard({ card }: BentoCardProps) {
-  const content = (
-    <div
-      className={cn(
-        "relative h-full w-full overflow-hidden rounded-3xl",
-        card.variant === "featured" ? "bg-white" : "bg-card-gray"
-      )}
-    >
-      {card.image && (
-        <Image
-          src={card.image}
-          alt={card.title ?? ""}
-          fill
-          className="object-cover"
+export default function BentoCard({ project }: BentoCardProps) {
+  return (
+    <Link href={`/projects/${project.slug}`} className="block">
+      <article className="flex h-full flex-col overflow-hidden rounded-3xl bg-white">
+        <ImagePlaceholder
+          label={project.imageLabel}
+          className="h-[240px] w-full"
         />
-      )}
-    </div>
+        <div className="flex flex-col gap-3 px-8 pb-8 pt-7">
+          <p className="font-roboto text-xs font-bold tracking-[0.96px] text-footer-brown">
+            {project.number}
+          </p>
+          <h3 className="font-sf text-[32px] leading-none text-black">
+            {project.cardTitle}
+          </h3>
+          <p className="font-sf text-base leading-[1.55] text-muted">
+            {project.cardDescription}
+          </p>
+        </div>
+      </article>
+    </Link>
   );
-
-  if (card.href) {
-    return (
-      <Link href={card.href} className="block h-full w-full">
-        {content}
-      </Link>
-    );
-  }
-
-  return content;
 }

@@ -1,30 +1,27 @@
+import HoverPreview from "@/app/components/HoverPreview";
+
 /**
- * Homepage introduction: name, role/status tagline, and an illustration
- * placeholder ready for a real image later.
+ * Homepage introduction: name, role, interests, and internship status.
+ * The UToronto mention keeps the existing hover-preview interaction.
  */
 export default function Hero() {
   return (
-    <section className="flex flex-col gap-16 md:flex-row md:items-center md:justify-between">
-      <div className="flex max-w-md flex-col gap-6">
-        <h1 className="font-geneva text-[32px] uppercase text-black">
-          Myeongjin
-        </h1>
-        <div className="flex flex-col gap-6 font-geneva text-base text-black">
-          <p>Software ⚬ Design ⚬ Hardware</p>
-          <p>
-            {"CS (HCI) @ "}
-            <a
-              href="https://future.utoronto.ca/data-computer-science"
-              target="_blank"
-              className="text-accent-pink"
-            >
-              UToronto (main campus)
-            </a>
-          </p>
-          <p>Seeking 2027 Winter Internship</p>
-        </div>
+    <section className="flex max-w-[560px] flex-col gap-6">
+      <h1 className="font-garamond text-[72px] leading-[0.95] text-black">
+        Myeongjin
+      </h1>
+      <div className="font-sf text-base leading-[1.55] text-black">
+        CS (HCI) @{" "}
+        <HoverPreview
+          href="https://future.utoronto.ca/data-computer-science"
+          className="text-accent-pink"
+        >
+          UToronto (Main Campus)
+        </HoverPreview>
       </div>
-      <div className="aspect-[593/484] w-full max-w-[593px] shrink-0 rounded-3xl bg-card-gray" />
+      <p className="font-sf text-base text-muted">
+        Seeking Winter 2027 Internships
+      </p>
     </section>
   );
 }

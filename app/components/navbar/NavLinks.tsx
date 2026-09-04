@@ -6,6 +6,17 @@ import { navItems } from "@/data/navigation";
 import { cn } from "@/utils/utils";
 
 /**
+ * True when the current route belongs to this nav item, including nested
+ * project case-study URLs under /projects.
+ */
+function isActivePath(pathname: string, href: string): boolean {
+  if (href === "/") {
+    return pathname === "/";
+  }
+  return pathname === href || pathname.startsWith(`${href}/`);
+}
+
+/**
  * Vertical primary navigation fixed to the left edge of the viewport.
  * Highlights the link matching the current route.
  */
@@ -20,7 +31,7 @@ export default function NavLinks() {
           href={item.href}
           className={cn(
             "text-center transition-opacity hover:opacity-70",
-            pathname === item.href && "underline"
+            isActivePath(pathname, item.href) && "underline"
           )}
         >
           {item.label}

@@ -1,17 +1,13 @@
-import Link from "next/link";
+import PrimaryButton from "@/app/components/PrimaryButton";
+import { siteLinks } from "@/data/site";
 
 /**
- * Bottom footer band with a "Guest Board" call-to-action button.
+ * Bottom footer band with a résumé call-to-action.
  */
 export default function Footer() {
   return (
     <footer className="mt-32 ml-[100px] flex h-[230px] items-end justify-end bg-footer-brown pb-[18px] pr-[15px]">
-      <Link
-        href="/guest-board"
-        className="rounded-lg bg-accent-pink px-[57px] py-[14px] font-roboto text-base font-bold uppercase text-black"
-      >
-        Guest Board
-      </Link>
+      <PrimaryButton href={siteLinks.resume}>Guest Page</PrimaryButton>
     </footer>
   );
 }
