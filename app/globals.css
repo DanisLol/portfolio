@@ -31,7 +31,9 @@ body,
   --font-geneva: Geneva, Verdana, sans-serif;
   --font-roboto: var(--font-roboto);
   --font-garamond: var(--font-eb-garamond);
-  --font-sf: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
+  --font-danhand: var(--font-danhand);
+  --font-sf:
+    -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display",
     "Segoe UI", sans-serif;
 }
 

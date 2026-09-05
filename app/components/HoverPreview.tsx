@@ -42,9 +42,10 @@ const preloadedSources = new Set<string>();
 
 const overlayTransition = {
   type: "spring" as const,
-  stiffness: 420,
+  stiffness: 300,
   damping: 30,
-  mass: 0.65,
+  // mass: 0.65,
+  mass: 1,
 };
 
 const sketchEase = [0.42, 0, 0.18, 1] as const;
@@ -341,7 +342,7 @@ function PencilOutline({ width, height, reduceMotion }: PencilOutlineProps) {
           stroke="#171717"
           strokeLinecap="round"
           strokeLinejoin="round"
-          strokeWidth="1.55"
+          strokeWidth="3"
           vectorEffect="non-scaling-stroke"
           initial={reduceMotion ? false : { pathLength: 0 }}
           animate={{ pathLength: 1 }}
@@ -603,7 +604,11 @@ export default function HoverPreview({
             transition={reduceMotion ? { duration: 0 } : overlayTransition}
             className="pointer-events-none absolute bottom-full left-1/2 z-50 mb-1 block origin-bottom -translate-x-1/2 [@media(hover:none)]:hidden"
           >
-            <PreviewCard media={media} href={href} reduceMotion={reduceMotion} />
+            <PreviewCard
+              media={media}
+              href={href}
+              reduceMotion={reduceMotion}
+            />
           </motion.span>
         ) : null}
       </AnimatePresence>

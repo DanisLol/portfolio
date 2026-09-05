@@ -1,4 +1,5 @@
 import HoverPreview from "@/app/components/HoverPreview";
+import AnimateText from "@/app/components/AnimateText";
 
 /**
  * Homepage introduction: name, role, interests, and internship status.
@@ -7,8 +8,8 @@ import HoverPreview from "@/app/components/HoverPreview";
 export default function Hero() {
   return (
     <section className="flex max-w-[560px] flex-col gap-6">
-      <h1 className="font-garamond text-[72px] leading-[0.95] text-black">
-        Myeongjin
+      <h1 className="font-danhand text-[72px] leading-[0.95] text-black">
+        <AnimateText text="Myeongjin" />
       </h1>
       <div className="font-sf text-base leading-[1.55] text-black">
         CS (HCI) @{" "}

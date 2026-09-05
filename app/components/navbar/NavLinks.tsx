@@ -31,7 +31,7 @@ export default function NavLinks() {
           href={item.href}
           className={cn(
             "text-center transition-opacity hover:opacity-70",
-            isActivePath(pathname, item.href) && "underline"
+            isActivePath(pathname, item.href) && "underline",
           )}
         >
           {item.label}
