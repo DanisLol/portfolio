@@ -25,6 +25,7 @@ export default function UsePresenceData() {
 
   return (
     <div className="relative flex shrink-0 items-center gap-2.5">
+      <PrefetchedSlides />
       <motion.button
         initial={false}
         aria-label="Previous"
@@ -36,7 +37,12 @@ export default function UsePresenceData() {
         <ArrowLeft />
       </motion.button>
       <AnimatePresence custom={direction} initial={false} mode="popLayout">
-        <Slide key={photo.src} src={photo.src} alt={photo.alt} />
+        <Slide
+          key={photo.src}
+          src={photo.src}
+          alt={photo.alt}
+          priority={selectedItem === 0}
+        />
       </AnimatePresence>
       <motion.button
         initial={false}
@@ -55,13 +61,37 @@ export default function UsePresenceData() {
 type SlideProps = {
   src: string;
   alt: string;
+  priority?: boolean;
 };
+
+/**
+ * Loads every carousel photo offscreen so slide changes hit the browser cache.
+ */
+function PrefetchedSlides() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute h-[350px] w-[350px] overflow-hidden opacity-0"
+    >
+      {aboutPhotos.map((photo) => (
+        <Image
+          key={photo.src}
+          src={photo.src}
+          alt=""
+          fill
+          sizes="350px"
+          unoptimized
+        />
+      ))}
+    </div>
+  );
+}
 
 /**
  * Single carousel frame that slides in and out using presence direction.
  */
 const Slide = forwardRef(function Slide(
-  { src, alt }: SlideProps,
+  { src, alt, priority = false }: SlideProps,
   ref: React.Ref<HTMLDivElement>,
 ) {
   const direction = usePresenceData();
@@ -75,7 +105,6 @@ const Slide = forwardRef(function Slide(
         opacity: 1,
         x: 0,
         transition: {
-          delay: 0.2,
           type: "spring",
           visualDuration: 0.3,
           bounce: 0.4,
@@ -90,6 +119,8 @@ const Slide = forwardRef(function Slide(
           alt={alt}
           fill
           sizes="350px"
+          priority={priority}
+          unoptimized
           className="object-cover"
           onError={() => setFailed(true)}
         />
