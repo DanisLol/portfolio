@@ -1,5 +1,9 @@
+"use client";
 import { FaEnvelope, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { socialLinks, type SocialPlatform } from "@/data/social";
+import { motion } from "motion/react";
+
+const MotionA = motion.create("a");
 
 const platformIcons: Record<SocialPlatform, typeof FaXTwitter> = {
   x: FaXTwitter,
@@ -18,16 +22,21 @@ export default function SocialLinks() {
       {socialLinks.map((social) => {
         const Icon = platformIcons[social.platform];
         return (
-          <a
+          <MotionA
             key={social.platform}
             href={social.href}
+            whileHover={{ scale: 1.15 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ type: "spring", stiffness: 400, damping: 25 }}
             aria-label={social.label}
             target={social.platform === "email" ? undefined : "_blank"}
-            rel={social.platform === "email" ? undefined : "noopener noreferrer"}
-            className="transition-opacity hover:opacity-70"
+            rel={
+              social.platform === "email" ? undefined : "noopener noreferrer"
+            }
+            className="inline-block"
           >
             <Icon size={20} />
-          </a>
+          </MotionA>
         );
       })}
     </div>

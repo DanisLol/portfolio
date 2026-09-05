@@ -43,7 +43,10 @@ export default function ProjectDetail({ project }: ProjectDetailProps) {
           {project.stats ? (
             <div className="flex flex-wrap gap-6">
               {project.stats.map((stat) => (
-                <div key={stat.label} className="flex w-[140px] flex-col gap-2.5">
+                <div
+                  key={stat.label}
+                  className="flex w-[140px] flex-col gap-2.5"
+                >
                   <p className="font-garamond text-[48px] leading-none text-black">
                     {stat.value}
                   </p>

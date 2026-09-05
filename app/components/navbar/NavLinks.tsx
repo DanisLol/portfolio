@@ -2,8 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "motion/react";
 import { navItems } from "@/data/navigation";
 import { cn } from "@/utils/utils";
+
+const MotionLink = motion.create(Link);
 
 /**
  * True when the current route belongs to this nav item, including nested
@@ -26,16 +29,19 @@ export default function NavLinks() {
   return (
     <nav className="fixed left-0 top-0 z-40 flex h-screen w-[100px] flex-col items-center justify-center gap-[25px] font-geneva text-[16px] text-nav-pink">
       {navItems.map((item) => (
-        <Link
+        <MotionLink
           key={item.href}
           href={item.href}
+          whileHover={{ scale: 1.15 }}
+          whileTap={{ scale: 0.95 }}
+          transition={{ type: "spring", stiffness: 400, damping: 25 }}
           className={cn(
-            "text-center transition-opacity hover:opacity-70",
+            "inline-block text-center",
             isActivePath(pathname, item.href) && "underline",
           )}
         >
           {item.label}
-        </Link>
+        </MotionLink>
       ))}
     </nav>
   );

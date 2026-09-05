@@ -17,5 +17,5 @@ export const socialLinks: SocialLinkData[] = [
     href: "https://www.linkedin.com/in/myeongjin-wang-8034ab259/",
     label: "LinkedIn",
   },
-  { platform: "email", href: "mailto:#", label: "Email" },
+  { platform: "email", href: "mailto:mjwang005@gmail.com", label: "Email" },
 ];
