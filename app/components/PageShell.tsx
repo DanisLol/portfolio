@@ -8,8 +8,8 @@ type PageShellProps = {
 };
 
 /**
- * Shared page chrome: cream canvas, left offset for the vertical nav, and
- * top padding that clears the social icons.
+ * Shared page chrome: cream canvas, left offset for the top-left vertical
+ * nav, and top padding that clears the social icons.
  */
 export default function PageShell({
   children,
@@ -20,7 +20,7 @@ export default function PageShell({
     <main className="flex min-h-screen flex-col bg-cream">
       <div
         className={cn(
-          "flex-1 pl-[140px] pr-[72px] pt-24",
+          "flex-1 pl-[168px] pr-[72px] pt-24",
           footer ? undefined : "pb-32",
           className,
         )}

@@ -20,14 +20,17 @@ function isActivePath(pathname: string, href: string): boolean {
 }
 
 /**
- * Vertical primary navigation fixed to the left edge of the viewport.
- * Highlights the link matching the current route.
+ * Vertical primary navigation anchored near the top-left of the viewport,
+ * inset so it does not sit in the extreme corner.
  */
 export default function NavLinks() {
   const pathname = usePathname();
 
   return (
-    <nav className="fixed left-0 top-0 z-40 flex h-screen w-[100px] flex-col items-center justify-center gap-[25px] font-geneva text-[16px] text-nav-pink">
+    <nav
+      aria-label="Primary"
+      className="fixed left-12 top-10 z-40 flex flex-col items-start gap-[25px] font-geneva text-[16px] text-nav-pink"
+    >
       {navItems.map((item) => (
         <MotionLink
           key={item.href}
@@ -36,7 +39,7 @@ export default function NavLinks() {
           whileTap={{ scale: 0.95 }}
           transition={{ type: "spring", stiffness: 400, damping: 25 }}
           className={cn(
-            "inline-block text-center",
+            "inline-block text-left",
             isActivePath(pathname, item.href) && "underline",
           )}
         >

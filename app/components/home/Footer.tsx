@@ -6,7 +6,7 @@ import { siteLinks } from "@/data/site";
  */
 export default function Footer() {
   return (
-    <footer className="mt-32 ml-[100px] flex h-[230px] items-end justify-end bg-footer-brown pb-[18px] pr-[15px]">
+    <footer className="mt-32 flex h-[230px] items-end justify-end bg-footer-brown pb-[18px] pr-[15px]">
       <PrimaryButton href={siteLinks.resume}>Guest Page</PrimaryButton>
     </footer>
   );
