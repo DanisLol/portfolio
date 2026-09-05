@@ -10,7 +10,6 @@ export type ProjectLink = {
 
 export type Project = {
   slug: string;
-  number: string;
   title: string;
   cardTitle: string;
   cardDescription: string;
@@ -28,7 +27,6 @@ export type Project = {
 export const projects: Project[] = [
   {
     slug: "pethsapp-2-0",
-    number: "01",
     title: "Pethsapp 2.0",
     cardTitle: "PETHSAPP 2.0",
     cardDescription:
@@ -54,7 +52,6 @@ export const projects: Project[] = [
   },
   {
     slug: "anime-recommender",
-    number: "02",
     title: "Anime Recommender",
     cardTitle: "ANIME RECOMMENDER",
     cardDescription:
@@ -69,7 +66,6 @@ export const projects: Project[] = [
   },
   {
     slug: "face-search",
-    number: "03",
     title: "Face Search",
     cardTitle: "FACE SEARCH",
     cardDescription:
@@ -85,7 +81,6 @@ export const projects: Project[] = [
   },
   {
     slug: "college-admission-simulator",
-    number: "04",
     title: "College Admission Simulator",
     cardTitle: "COLLEGE ADMISSION SIMULATOR",
     cardDescription:

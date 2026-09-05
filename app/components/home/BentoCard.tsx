@@ -7,7 +7,7 @@ type BentoCardProps = {
 };
 
 /**
- * Homepage project card: image slot, index, title, and short description.
+ * Homepage project card: image slot, title, and short description.
  * The whole card remains a link, matching the previous grid interaction.
  */
 export default function BentoCard({ project }: BentoCardProps) {
@@ -19,9 +19,6 @@ export default function BentoCard({ project }: BentoCardProps) {
           className="h-[240px] w-full"
         />
         <div className="flex flex-col gap-3 px-8 pb-8 pt-7">
-          <p className="font-roboto text-xs font-bold tracking-[0.96px] text-footer-brown">
-            {project.number}
-          </p>
           <h3 className="font-sf text-[32px] leading-none text-black">
             {project.cardTitle}
           </h3>
