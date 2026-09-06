@@ -1,9 +1,12 @@
 "use client";
+
+import { useState } from "react";
 import { FaEnvelope, FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import { socialLinks, type SocialPlatform } from "@/data/social";
-import { motion } from "motion/react";
+import { motion, useMotionValueEvent, useScroll } from "motion/react";
 
 const MotionA = motion.create("a");
+const MotionDiv = motion.create("div");
 
 const platformIcons: Record<SocialPlatform, typeof FaXTwitter> = {
   x: FaXTwitter,
@@ -11,16 +14,47 @@ const platformIcons: Record<SocialPlatform, typeof FaXTwitter> = {
   email: FaEnvelope,
 };
 
+/** Scroll offset below which social links always stay visible. */
+const TOP_REVEAL_OFFSET = 50;
+
 /**
  * Row of social/contact icon links shown in the top-right corner of every
- * page. Icon glyphs come from react-icons since Figma only exported these
- * as a single flattened image.
+ * page. Hides while scrolling down and reappears when scrolling up or near
+ * the top of the page.
  */
 export default function SocialLinks() {
+  const { scrollY } = useScroll();
+  const [visible, setVisible] = useState(true);
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    const previous = scrollY.getPrevious() ?? 0;
+
+    if (latest < TOP_REVEAL_OFFSET) {
+      setVisible(true);
+      return;
+    }
+
+    if (latest > previous) {
+      setVisible(false);
+      return;
+    }
+
+    setVisible(true);
+  });
+
   return (
-    <div className="fixed right-[72px] top-10 z-40 flex items-center gap-5 text-black">
+    <MotionDiv
+      className="fixed right-[72px] top-10 z-40 flex items-center gap-5 text-black"
+      animate={{
+        opacity: visible ? 1 : 0,
+        y: visible ? 0 : -12,
+      }}
+      transition={{ duration: 0.2 }}
+      style={{ pointerEvents: visible ? "auto" : "none" }}
+    >
       {socialLinks.map((social) => {
         const Icon = platformIcons[social.platform];
+
         return (
           <MotionA
             key={social.platform}
@@ -39,6 +73,6 @@ export default function SocialLinks() {
           </MotionA>
         );
       })}
-    </div>
+    </MotionDiv>
   );
 }
