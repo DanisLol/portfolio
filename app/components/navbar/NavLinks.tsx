@@ -9,8 +9,8 @@ import { cn } from "@/utils/utils";
 const MotionLink = motion.create(Link);
 
 /**
- * True when the current route belongs to this nav item, including nested
- * project case-study URLs under /projects.
+ * True when the current route belongs to this nav item, including any nested
+ * routes beneath it.
  */
 function isActivePath(pathname: string, href: string): boolean {
   if (href === "/") {
