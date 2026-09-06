@@ -18,19 +18,17 @@ export const projects: Project[] = [
     slug: "pethsapp-2-0",
     title: "Pethsapp 2.0",
     cardTitle: "Pethsapp",
-    cardDescription:
-      "A school information app for 700+ students, where I decided what shipped and ran the launch myself.",
+    cardDescription: "A school information app for 700+ students",
     image: "/projects/pethsapp.jpg",
     href: "https://www.tsac.ca/pethsapp",
   },
   {
-    slug: "anime-recommender",
-    title: "Anime Recommender",
-    cardTitle: "Anime Recommender",
-    cardDescription:
-      "A graph-based recommendation engine across 25,000 anime titles and 12.4M+ user reviews.",
-    image: "/projects/anime-recommender.jpeg",
-    href: "#",
+    slug: "Embedded Interactive Timer",
+    title: "Embedded Interactive Timer",
+    cardTitle: "Embedded Interactive Timer",
+    cardDescription: "An interactive embedded timer.",
+    image: "/projects/timer.jpg",
+    href: "https://github.com/DanisLol/ControlSystemTimer",
   },
   {
     slug: "face-search",
@@ -39,14 +37,23 @@ export const projects: Project[] = [
     cardDescription:
       "A face recognition pipeline for similarity search across large photo libraries.",
     image: "/projects/face-search.jpg",
-    href: "#",
+    href: "https://github.com/DanisLol/face-recognition",
+  },
+
+  {
+    slug: "anime-recommender",
+    title: "Anime Recommender",
+    cardTitle: "Anime Recommender",
+    cardDescription:
+      "A graph-based recommendation engine across 25,000 anime titles and 12.4M+ user reviews.",
+    image: "/projects/anime-recommender.jpeg",
+    href: "https://github.com/DanisLol/CSC111-Project2",
   },
   {
-    slug: "college-admission-simulator",
-    title: "College Admission Simulator",
-    cardTitle: "College Admission Simulator",
-    cardDescription:
-      "An interactive Java simulation of how student choices shape admission outcomes.",
+    slug: "UofT CS Webring",
+    title: "UofT CS Webring",
+    cardTitle: "UofT CS Webring",
+    cardDescription: "UofT's CS Webring",
     image: "/projects/college-admission-simulator.jpg",
     href: "#",
   },
