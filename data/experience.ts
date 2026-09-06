@@ -16,12 +16,6 @@ export type SkillGroup = {
  */
 export const experienceEntries: ExperienceEntry[] = [
   {
-    label: "EDUCATION",
-    title: "UNIVERSITY OF TORONTO",
-    meta: "Bachelor of Computer Science · Toronto, ON",
-    body: "Specialist in Technology Leadership and Human-Computer Interaction. Relevant courses: Data Structures, Algorithms, Object-Oriented Programming, Linear Algebra, Calculus with Proof.",
-  },
-  {
     label: "SEP 2022 – JUL 2025",
     title: "TSAC",
     meta: "Technology Chair, Grade Representative · Markham, ON",

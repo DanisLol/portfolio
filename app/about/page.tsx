@@ -23,8 +23,8 @@ function socialHref(platform: "email" | "linkedin"): string {
 export default function AboutPage() {
   return (
     <PageShell>
-      <div className="mt-24 flex flex-col items-start gap-12 lg:flex-row lg:gap-8">
-        <div className="flex max-w-[640px] flex-col gap-6">
+      <div className="mt-24 flex max-w-[1080px] flex-col items-start gap-12 lg:flex-row lg:items-center lg:justify-between lg:gap-16">
+        <div className="flex max-w-[560px] flex-col gap-6">
           <p className="font-sf text-base leading-[1.55] text-black">
             I study computer science at the University of Toronto, specializing
             in technology leadership and human-computer interaction.
