@@ -27,9 +27,7 @@ export default function AboutPage() {
         <div className="flex max-w-[640px] flex-col gap-6">
           <p className="font-sf text-base leading-[1.55] text-black">
             I study computer science at the University of Toronto, specializing
-            in technology leadership and human-computer interaction. The work I
-            like sits between deciding what to build and getting it in front of
-            people.
+            in technology leadership and human-computer interaction.
           </p>
           <p className="font-sf text-base leading-[1.55] text-black">
             Outside of that I read, I run, and I watch Broadway musicals.
