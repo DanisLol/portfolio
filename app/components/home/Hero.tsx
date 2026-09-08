@@ -20,6 +20,7 @@ export default function Hero() {
           UToronto (Main Campus)
         </HoverPreview>
       </div>
+      <p>Currently working on CS Webring for UofT</p>
       <p className="font-sf text-base text-muted">
         Seeking Winter 2027 Internships
       </p>
