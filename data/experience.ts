@@ -1,9 +1,15 @@
+export type ExperienceImage = {
+  /** Path under `public/`, or omit to show a grey placeholder slot. */
+  src?: string;
+  alt: string;
+};
+
 export type ExperienceEntry = {
   label: string;
   title: string;
   meta: string;
-  body?: string;
-  bullets?: string[];
+  summary: string;
+  image: ExperienceImage;
 };
 
 export type SkillGroup = {
@@ -13,26 +19,23 @@ export type SkillGroup = {
 
 /**
  * Education and leadership entries for the Experience page.
+ * Drop matching images into `public/experience/` and set each `src`.
  */
 export const experienceEntries: ExperienceEntry[] = [
   {
-    label: "SEP 2022 – JUL 2025",
+    label: "2022 – 2025",
     title: "TSAC",
-    meta: "Technology Chair, Grade Representative · Markham, ON",
-    bullets: [
-      "Developed and publicized a school app (Pethsapp), collaborating across student, teacher, and parent stakeholders to create a centralized communication platform.",
-      "Organized 900+ person activities with a team of 25 council members to strengthen school engagement.",
-      "Advocated for a cohort of 450+ students, hosting a prom event and reaching out to external vendors.",
-    ],
+    meta: "Technology Chair, Grade Representative",
+    summary:
+      "Built Pethsapp, a school app that gave students, teachers, and parents one place to communicate, and helped run the student council behind it.",
+    image: { src: "/projects/pethsapp.jpg", alt: "Pethsapp" },
   },
   {
-    label: "OCT 2022 – JUL 2025",
+    label: "2022 – 2025",
     title: "GAME DEVELOPMENT CLUB",
-    meta: "Co-President · Markham, ON",
-    bullets: [
-      "Led 6 club executives to coordinate 90+ person events, including an industry visit to Snowman Game Studio.",
-      "Mentored and taught over 100 students in weekly 1-hour lessons, providing guidance and feedback.",
-      "Increased the club's social media presence by 300 followers.",
-    ],
+    meta: "Co-President",
+    summary:
+      "Led the club executive team, taught weekly lessons, and took members to visit Snowman Game Studio.",
+    image: { alt: "Snowman Game Studio visit" },
   },
 ];
