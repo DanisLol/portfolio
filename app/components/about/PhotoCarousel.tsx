@@ -8,7 +8,7 @@ import { aboutPhotos } from "@/data/about";
 /**
  * About-page photo carousel with directional enter/exit animation.
  */
-export default function UsePresenceData() {
+export default function PhotoCarousel() {
   const [selectedItem, setSelectedItem] = useState(0);
   const [direction, setDirection] = useState<1 | -1>(1);
 
@@ -24,37 +24,57 @@ export default function UsePresenceData() {
   const photo = aboutPhotos[selectedItem];
 
   return (
-    <div className="relative flex shrink-0 items-center gap-2.5">
-      <PrefetchedSlides />
-      <motion.button
-        initial={false}
-        aria-label="Previous"
-        className="relative z-[1] flex h-10 w-10 items-center justify-center rounded-full bg-accent-pink text-black outline-offset-2"
-        onClick={() => setSlide(-1)}
-        whileFocus={{ outline: "2px solid var(--accent-pink)" }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <ArrowLeft />
-      </motion.button>
-      <AnimatePresence custom={direction} initial={false} mode="popLayout">
-        <Slide
-          key={photo.src}
-          src={photo.src}
-          alt={photo.alt}
-          priority={selectedItem === 0}
-        />
-      </AnimatePresence>
-      <motion.button
-        initial={false}
-        aria-label="Next"
-        className="relative z-[1] flex h-10 w-10 items-center justify-center rounded-full bg-accent-pink text-black outline-offset-2"
-        onClick={() => setSlide(1)}
-        whileFocus={{ outline: "2px solid var(--accent-pink)" }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <ArrowRight />
-      </motion.button>
+    <div className="flex w-[350px] shrink-0 flex-col gap-4">
+      <div className="relative">
+        <PrefetchedSlides />
+        <AnimatePresence custom={direction} initial={false} mode="popLayout">
+          <Slide
+            key={photo.src}
+            src={photo.src}
+            alt={photo.alt}
+            priority={selectedItem === 0}
+          />
+        </AnimatePresence>
+      </div>
+      <div className="flex items-center justify-between">
+        <span className="font-roboto text-xs font-bold tracking-[0.96px] text-muted tabular-nums">
+          {String(selectedItem + 1).padStart(2, "0")} /{" "}
+          {String(aboutPhotos.length).padStart(2, "0")}
+        </span>
+        <div className="flex gap-2.5">
+          <CarouselButton label="Previous" onClick={() => setSlide(-1)}>
+            <ArrowLeft />
+          </CarouselButton>
+          <CarouselButton label="Next" onClick={() => setSlide(1)}>
+            <ArrowRight />
+          </CarouselButton>
+        </div>
+      </div>
     </div>
+  );
+}
+
+type CarouselButtonProps = {
+  label: string;
+  onClick: () => void;
+  children: React.ReactNode;
+};
+
+/**
+ * Round pink arrow control used for previous/next.
+ */
+function CarouselButton({ label, onClick, children }: CarouselButtonProps) {
+  return (
+    <motion.button
+      initial={false}
+      aria-label={label}
+      className="relative z-[1] flex h-10 w-10 items-center justify-center rounded-full bg-accent-pink text-black outline-offset-2"
+      onClick={onClick}
+      whileFocus={{ outline: "2px solid var(--accent-pink)" }}
+      whileTap={{ scale: 0.9 }}
+    >
+      {children}
+    </motion.button>
   );
 }
 
