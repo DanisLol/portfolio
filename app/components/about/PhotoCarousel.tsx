@@ -36,19 +36,13 @@ export default function PhotoCarousel() {
           />
         </AnimatePresence>
       </div>
-      <div className="flex items-center justify-between">
-        <span className="font-roboto text-xs font-bold tracking-[0.96px] text-muted tabular-nums">
-          {String(selectedItem + 1).padStart(2, "0")} /{" "}
-          {String(aboutPhotos.length).padStart(2, "0")}
-        </span>
-        <div className="flex gap-2.5">
-          <CarouselButton label="Previous" onClick={() => setSlide(-1)}>
-            <ArrowLeft />
-          </CarouselButton>
-          <CarouselButton label="Next" onClick={() => setSlide(1)}>
-            <ArrowRight />
-          </CarouselButton>
-        </div>
+      <div className="flex justify-end gap-2.5">
+        <CarouselButton label="Previous" onClick={() => setSlide(-1)}>
+          <ArrowLeft />
+        </CarouselButton>
+        <CarouselButton label="Next" onClick={() => setSlide(1)}>
+          <ArrowRight />
+        </CarouselButton>
       </div>
     </div>
   );
